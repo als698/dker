@@ -1,0 +1,29 @@
+#!/bin/sh
+
+if [ "$1" = "build" ]; then
+ shift 1
+ docker build --pull --rm -f Dockerfile -t "$1" .
+ shift 1
+elif [ "$1" = "compose" ]; then
+ docker-compose -f "docker-compose.yml" down
+ docker-compose -f "docker-compose.yml" up -d --build --force-recreate
+elif [ "$1" = "run" ]; then
+ shift 1
+ docker stop "$1"
+ docker rm "$1"
+ docker run -it --name "$1" "$1"
+ shift 1
+elif [ "$1" = "exec" ]; then
+ shift 1
+ docker exec -it "$1" /bin/bash
+ shift 1
+else
+ printf "\n"
+ printf "Usage: dker COMMAND [OPTIONS]\n\n"
+ printf "  OPTIONS:\n"
+ printf "    build [container_name]  -  (re)build container Dockerfile\n"
+ printf "    compose                 -  docker-compose restart (down and up) only docker-compose.yml\n"
+ printf "    run [image]             -  run container image\n"
+ printf "    exec [image]            -  execute container image /bin/bash\n"
+fi
+
