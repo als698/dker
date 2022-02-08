@@ -23,13 +23,12 @@ elif [ "$1" = "exec" ]; then
  docker volume rm $(docker volume ls -q)
  shift 1
  elif [ "$1" = "rmf" ]; then
- docker system prune -a y
- yes
+ echo "y" | docker system prune -a
  shift 1
  elif [ "$1" = "rmfk" ]; then
  docker rm -f $(docker ps -a -q)
  docker volume rm $(docker volume ls -q)
- docker system prune -a y
+ echo "y" | docker system prune -a
  shift 1
 else
  printf "\n"
