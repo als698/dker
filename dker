@@ -7,6 +7,7 @@ if [ "$1" = "build" ]; then
 elif [ "$1" = "compose" ]; then
  docker-compose -f "docker-compose.yml" down
  docker-compose -f "docker-compose.yml" up -d --build --force-recreate
+ shift 1
 elif [ "$1" = "run" ]; then
  shift 1
  docker stop "$1"
@@ -18,17 +19,14 @@ elif [ "$1" = "exec" ]; then
  docker exec -it "$1" /bin/sh
  shift 1
  elif [ "$1" = "kill" ]; then
- shift 1
  docker rm -f $(docker ps -a -q)
  docker volume rm $(docker volume ls -q)
  shift 1
  elif [ "$1" = "rmf" ]; then
- shift 1
  docker system prune -a y
  yes
  shift 1
  elif [ "$1" = "rmfk" ]; then
- shift 1
  docker rm -f $(docker ps -a -q)
  docker volume rm $(docker volume ls -q)
  docker system prune -a y
