@@ -15,7 +15,23 @@ elif [ "$1" = "run" ]; then
  shift 1
 elif [ "$1" = "exec" ]; then
  shift 1
- docker exec -it "$1" /bin/bash
+ docker exec -it "$1" /bin/sh
+ shift 1
+ elif [ "$1" = "kill" ]; then
+ shift 1
+ docker rm -f $(docker ps -a -q)
+ docker volume rm $(docker volume ls -q)
+ shift 1
+ elif [ "$1" = "rmf" ]; then
+ shift 1
+ docker system prune -a y
+ yes
+ shift 1
+ elif [ "$1" = "rmfk" ]; then
+ shift 1
+ docker rm -f $(docker ps -a -q)
+ docker volume rm $(docker volume ls -q)
+ docker system prune -a y
  shift 1
 else
  printf "\n"
@@ -24,6 +40,9 @@ else
  printf "    build [container_name]  -  (re)build container Dockerfile\n"
  printf "    compose                 -  docker-compose restart (down and up) only docker-compose.yml\n"
  printf "    run [image]             -  run container image\n"
- printf "    exec [image]            -  execute container image /bin/bash\n"
+ printf "    exec [image]            -  execute container image /bin/sh\n"
+ printf "    kill                    -  stop and remove all containers and volumes\n"
+ printf "    rmf                     -  remove all unused images\n"
+ printf "    rmfk                    -  remove anything\n"
 fi
 

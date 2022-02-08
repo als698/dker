@@ -8,6 +8,9 @@ Usage: dker COMMAND [OPTIONS]
     compose                 -  docker-compose restart (down and up) only docker-compose.yml
     run [image]             -  run container image
     exec [image]            -  execute container image /bin/bash
+    kill                    -  stop and remove all containers and volumes
+    rmf                     -  remove all unused images
+    rmfk                    -  remove anything
 ```
 ## Install
 ### Linux
