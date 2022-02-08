@@ -7,7 +7,7 @@ Usage: dker COMMAND [OPTIONS]
     build [container_name]  -  (re)build container Dockerfile
     compose                 -  docker-compose restart (down and up) only docker-compose.yml
     run [image]             -  run container image
-    exec [image]            -  execute container image /bin/bash
+    exec [image]            -  execute container image /bin/sh
     kill                    -  stop and remove all containers and volumes
     rmf                     -  remove all unused images
     rmfk                    -  remove anything
