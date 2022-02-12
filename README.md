@@ -15,10 +15,10 @@ Usage: dker COMMAND [OPTIONS]
 ## Install
 ### Linux
 ```sh
-curl -O https://raw.githubusercontent.com/als698/dker/master/dker && chmod +x dker && cp dker /usr/bin
+curl -O https://raw.githubusercontent.com/als698/dker/master/dker && sudo chmod +x dker && sudo cp dker /usr/bin
 ```
 
 ### MacOS
 ```sh
-curl -O https://raw.githubusercontent.com/als698/dker/master/dker && chmod u+x dker && cp dker /usr/local/bin
+curl -O https://raw.githubusercontent.com/als698/dker/master/dker && sudo chmod u+x dker && sudo cp dker /usr/local/bin
 ```
