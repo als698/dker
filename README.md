@@ -9,6 +9,7 @@ Usage: dker COMMAND [OPTIONS]
     run [image]             -  run container image
     exec [image]            -  execute container image /bin/sh
     kill                    -  stop and remove all containers and volumes
+    rmu                     -  remove all untagged images
     rmf                     -  remove all unused images
     rmfk                    -  remove anything
 ```
