@@ -18,18 +18,20 @@ elif [ "$1" = "exec" ]; then
  shift 1
  docker exec -it "$1" /bin/bash
  shift 1
- elif [ "$1" = "kill" ]; then
+elif [ "$1" = "kill" ]; then
  docker stop $(docker ps -a -q)
  docker rm -f $(docker ps -a -q)
- docker volume rm $(docker volume ls -q)
  shift 1
- elif [ "$1" = "rmu" ]; then
+elif [ "$1" = "rmu" ]; then
  docker rmi $(docker images | grep "<none>" | awk "{print $3}")
  shift 1
- elif [ "$1" = "rmf" ]; then
+elif [ "$1" = "rmv" ]; then
+ docker volume rm $(docker volume ls -q)
+ shift 1
+elif [ "$1" = "rmf" ]; then
  echo "y" | docker system prune -a
  shift 1
- elif [ "$1" = "rmfk" ]; then
+elif [ "$1" = "rmfk" ]; then
  docker rm -f $(docker ps -a -q)
  docker volume rm $(docker volume ls -q)
  echo "y" | docker system prune -a
@@ -42,8 +44,9 @@ else
  printf "    compose                 -  docker-compose restart (down and up) only docker-compose.yml\n"
  printf "    run [image]             -  run container image\n"
  printf "    exec [image]            -  execute container image /bin/sh\n"
- printf "    kill                    -  stop and remove all containers and volumes\n"
+ printf "    kill                    -  stop and remove all containers\n"
  printf "    rmu                     -  remove all untagged images\n"
+ printf "    rmv                     -  remove all volumes\n"
  printf "    rmf                     -  remove all unused images\n"
  printf "    rmfk                    -  remove everything\n"
 fi
