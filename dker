@@ -16,7 +16,7 @@ elif [ "$1" = "run" ]; then
  shift 1
 elif [ "$1" = "exec" ]; then
  shift 1
- docker exec -it "$1" /bin/sh
+ docker exec -it "$1" /bin/bash
  shift 1
  elif [ "$1" = "kill" ]; then
  docker stop $(docker ps -a -q)
