@@ -11,7 +11,7 @@ Usage: dker COMMAND [OPTIONS]
     kill                    -  stop and remove all containers and volumes
     rmu                     -  remove all untagged images
     rmf                     -  remove all unused images
-    rmfk                    -  remove anything
+    rmfk                    -  remove everything
 ```
 ## Install
 ### Linux

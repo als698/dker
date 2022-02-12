@@ -45,6 +45,6 @@ else
  printf "    kill                    -  stop and remove all containers and volumes\n"
  printf "    rmu                     -  remove all untagged images\n"
  printf "    rmf                     -  remove all unused images\n"
- printf "    rmfk                    -  remove anything\n"
+ printf "    rmfk                    -  remove everything\n"
 fi
 
