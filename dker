@@ -19,6 +19,7 @@ elif [ "$1" = "exec" ]; then
  docker exec -it "$1" /bin/sh
  shift 1
  elif [ "$1" = "kill" ]; then
+ docker stop $(docker ps -a -q)
  docker rm -f $(docker ps -a -q)
  docker volume rm $(docker volume ls -q)
  shift 1
