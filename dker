@@ -24,7 +24,7 @@ elif [ "$1" = "exec" ]; then
  docker volume rm $(docker volume ls -q)
  shift 1
  elif [ "$1" = "rmu" ]; then
- docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
+ docker rmi $(docker images | grep "<none>" | awk "{print $3}")
  shift 1
  elif [ "$1" = "rmf" ]; then
  echo "y" | docker system prune -a
